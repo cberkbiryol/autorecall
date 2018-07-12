@@ -1,0 +1,27 @@
+.jumbotron{
+    background-image: url("http://tripwallpapers.com/wp-content/uploads/2016/04/Car-Black-Lamborghini-Lp560-Road-Speed-Fine-Wallpaper-1920x1080.jpg");
+    background-color: rgba(219, 251, 253, 0.8);
+    background-repeat: no-repeat;
+    background-blend-mode:color-dodge;
+    background-size:cover;
+    border-radius: 2rem;
+}
+.icon1 {
+    font-size: 8rem
+}
+.head1 {
+    font-family: 'Faster One', cursive;    
+}
+
+.head2 {
+    font-family: 'Gugi', cursive;    
+}
+
+.head3 {
+    font-family: 'Anonymous Pro', monospace;
+}
+
+.head3box {
+    border-radius: 2rem;
+    border: solid;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
-import CarBox from "./components/CarBox";
+import Jumbo from "./components/Jumbo";
 import BodyContainer from "./components/BodyContainer";
+import CarBox from "./components/CarBox";
+import Footer from "./components/Footer";
 import './App.css';
 import cars from './cars.json';
 
@@ -8,6 +10,7 @@ class App extends React.Component {
   state = {
     cars: cars,
     score: 0,
+    msg: "Start Playing!"
   };
 
   ShuffleCars = () => {
@@ -23,44 +26,58 @@ class App extends React.Component {
     })
   }
 
-  check = (clicked,id) => {
+  check = (clicked, id) => {
     if (!clicked) {
-      this.setState({
-        score: this.state.score+1,
-      })
-      this.updateOne(id)
+      if (this.state.score === 11) {
+        this.setState({
+          score: 0,
+          msg: "You Win! Click to start Again!",
+        })
+        this.resetAll()
+      } else {
+        this.setState({
+          score: this.state.score + 1,
+          msg: "Well Done!",
+        })
+        this.updateOne(id)
+      }
+      
     } else {
       this.setState({
-        score: 0
-      }) 
-      this.resetAll()   
+        score: 0,
+        msg: "Nope! You have clicked it before... Start Again!"
+      })
+      this.resetAll()
     }
-    this.ShuffleCars()
+    this.ShuffleCars();
   }
 
-  updateOne =(id) => {
+  updateOne = (id) => {
     let array = this.state.cars.forEach(e => {
-      if (e.id === id) {return e.clicked = true}
+      if (e.id === id) { return e.clicked = true }
     });
     this.setState({
-      cars:array
+      cars: array
     })
   }
 
   resetAll = () => {
-    let array = this.state.cars.map(e => 
-       e.clicked = false
+    let array = this.state.cars.map(e =>
+      e.clicked = false
     );
     this.setState({
-      cars:array
+      cars: array
     })
-  }  
+  }
 
   render() {
     return (
+      <div>
       <BodyContainer>
-        <h1 className="title">Cars</h1>
-        <h2 className="title">Score: {this.state.score}/12</h2>
+        <Jumbo
+          score={[this.state.score, this.state.cars.length]}
+          message={this.state.msg}
+        />
         {this.state.cars.map(c => (
           <CarBox
             src={`${window.location.origin}${c.src}`}
@@ -69,8 +86,10 @@ class App extends React.Component {
             check={this.check}
             thisCar={c}
           />)
-        )}
+        )}        
       </BodyContainer>
+      <Footer/>
+      </div>
     );
   }
 }
