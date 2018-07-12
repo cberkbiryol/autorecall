@@ -1,0 +1,10 @@
+.card {
+    background: #fff;
+    border-radius: 4rem;
+    margin: .5rem;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+
+.card > img {
+  border-radius: 4rem;
+}
