@@ -27,4 +27,5 @@ Following NPM packages are used and required for the app to execute propoerly:
 
 ## How it works
 The gif below shows how the app works.
+
 ![App view](public/img/gif1.gif)
