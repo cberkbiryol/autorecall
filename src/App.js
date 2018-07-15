@@ -10,7 +10,8 @@ class App extends React.Component {
   state = {
     cars: cars,
     score: 0,
-    msg: "Start Playing!"
+    msg: "Start Playing!",
+    maxscore: 0
   };
 
   ShuffleCars = () => {
@@ -32,12 +33,14 @@ class App extends React.Component {
         this.setState({
           score: 0,
           msg: "You Win! Click to start Again!",
+          maxscore: 12
         })
         this.resetAll()
       } else {
         this.setState({
           score: this.state.score + 1,
           msg: "Well Done!",
+          maxscore: (this.state.score+1 > this.state.maxscore ? this.state.score+1 : this.state.maxscore)
         })
         this.updateOne(id)
       }
@@ -76,6 +79,7 @@ class App extends React.Component {
       <BodyContainer>
         <Jumbo
           score={[this.state.score, this.state.cars.length]}
+          maxscore={this.state.maxscore}
           message={this.state.msg}
         />
         {this.state.cars.map(c => (

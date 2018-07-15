@@ -26,8 +26,8 @@ return (
                 Click all  {props.score[1]} car images without clicking the same image twice...
             </h1>
             <div className="head3box" style={boxStyle}>
-                <h4 className="display-4 text-center head3" style={scoreStyle}>
-                    Current Score:{props.score[0]}/{props.score[1]}
+                <h4 className="display-5 text-center head3" style={scoreStyle}>
+                    Current Score:{props.score[0]}/{props.score[1]} | Top Score: {props.maxscore}
                 </h4>
             </div>
             <h4 className="display-5 text-center head2">
